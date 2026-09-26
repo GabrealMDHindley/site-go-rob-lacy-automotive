@@ -41,11 +41,30 @@ npm run build   # production build — must pass before every push
 npm run lint    # eslint
 ```
 
-## Integrations
+## Booking calendar (built in, GoHighLevel-ready)
 
-- Every "Book Your Call" CTA routes to `/book`, which embeds the client's own live
-  GoHighLevel booking calendar (the same calendar as goroblacy.com's "Book a call") —
-  booking is not rebuilt on this site, and no API keys are needed.
+Every "Book Your Call" CTA routes to `/book` — the site's own day/time calendar
+(`src/components/BookingForm.tsx`), ported from the studio's Train & Scale site where
+the GoHighLevel flow was verified end-to-end. Times are Central (`America/Chicago`).
+
+- **Before GoHighLevel is connected (request mode):** `/api/book/availability` serves
+  weekday business-hours slots (9 AM–5 PM CT, hourly, next 10 weekdays). Visitors pick a
+  time and "Request This Time" opens a pre-filled email to the client with the slot and
+  their details — nothing is lost.
+- **Connected (live mode):** set three Vercel env vars and redeploy — no code change:
+  - `GHL_API_KEY` — a GHL Private Integration token with Contacts (read + write),
+    Calendars (read + write), Calendar Events (read + write), and
+    `locations/customFields.readonly` scopes
+  - `GHL_LOCATION_ID` — the sub-account (location) ID
+  - `GHL_CALENDAR_ID` — the calendar bookings should land on
+
+  Availability then comes live from that calendar (`src/lib/ghl.ts`), `/api/book`
+  re-checks the slot, upserts the contact (tagged `website-booking`,
+  `dealership-site`; dealership name → Company Name) and books the appointment, then
+  redirects to the gated `/confirmation` page.
+- Optional GHL contact custom fields the booking fills if they exist (matched by name):
+  `Which Best Describes You?` (radio: "I own or manage a car dealership" / "I'm a car
+  salesman") and `What Would You Like Help With?` (large text).
 
 ## Deploys
 

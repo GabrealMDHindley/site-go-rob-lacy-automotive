@@ -57,7 +57,7 @@ const jsonLd = {
   url: site.url,
   logo: `${site.url}/brand/logo.png`,
   email: site.email,
-  telephone: "+1-928-392-4421",
+  telephone: site.phoneE164,
   slogan: site.tagline,
   description: site.mission,
   address: {

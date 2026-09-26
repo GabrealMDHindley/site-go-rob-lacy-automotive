@@ -11,7 +11,8 @@
 //   dealerships (target "buyer", close word "customer").
 // - Testimonials: every "Car Dealerships" testimonial on that page (20),
 //   verbatim, with the name and service label exactly as published.
-// - Contact details: supplied directly by the studio owner for this client.
+// - Contact details: from the client's own site, goroblacy.com (footer
+//   "Contact" / "Office"), per the studio owner's instruction.
 // - Short summaries (timeline bullets, stats, hero/mission lines) are
 //   condensed from the verbatim copy above — no new claims.
 
@@ -24,21 +25,18 @@ export const site = {
     "With every vehicle marketed like it's the flagship model — growth systems built for car dealerships and car salesmen.",
   mission:
     "Turning more online shoppers into showroom visits, test drives, and sales — for car dealerships and car salesmen.",
-  email: "rob@goroblacy.com",
-  phone: "(928) 392-4421",
-  phoneHref: "tel:+19283924421",
+  email: "info@goroblacy.com",
+  phone: "(928) 628-6279",
+  phoneHref: "tel:+19286286279",
+  phoneE164: "+1-928-628-6279",
   address: {
-    street: "16110 Foliage Avenue West",
-    city: "Rosemount",
-    region: "MN",
-    postalCode: "55068",
+    street: "5702 Elbo Bluff Dr",
+    city: "Manhattan",
+    region: "KS",
+    postalCode: "66502",
     country: "US",
   },
   url: "https://site-go-rob-lacy-automotive.vercel.app",
-  // The client's own live GoHighLevel booking calendar (the "Book a call"
-  // target on goroblacy.com) — embedded on /book, never rebuilt.
-  bookingWidgetUrl: "https://api.leadconnectorhq.com/widget/booking/esRzHcmsxajHKsgMoiSb",
-  bookingWidgetId: "esRzHcmsxajHKsgMoiSb",
 } as const;
 
 export const addressLine = `${site.address.street}, ${site.address.city}, ${site.address.region} ${site.address.postalCode}`;
@@ -336,6 +334,13 @@ export const testimonials: Testimonial[] = [
 export const vsl: { vimeoId: string | null; title: string } = {
   vimeoId: null,
   title: "Watch how the system works",
+};
+
+// Shown only on the gated /confirmation page (after a real booking). Set a
+// Vimeo ID if the client supplies a "watch this before we talk" video.
+export const confirmationVideo: { vimeoId: string | null; title: string } = {
+  vimeoId: null,
+  title: "You're confirmed — watch this before we talk",
 };
 
 export const nav = [

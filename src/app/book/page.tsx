@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
-import BookingEmbed from "@/components/BookingEmbed";
+import BookingForm from "@/components/BookingForm";
+import { TIMEZONE_LABEL } from "@/lib/booking";
 import { addressLine, site } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -12,14 +13,14 @@ export const metadata: Metadata = {
 export default function BookPage() {
   return (
     <section className="border-b border-white/5 px-6 pb-24 pt-40 sm:px-8 md:pb-32">
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-2xl">
         <SectionHeading
           eyebrow="Book Your Call"
           title="Pick a day and time"
-          description="Choose a time that works for you on the calendar below — we'll walk you through exactly what gets installed for your dealership."
+          description={`All times ${TIMEZONE_LABEL}. We'll walk you through exactly what gets installed for your dealership.`}
         />
-        <Reveal className="glass-card mt-12 p-3 sm:p-4" delay={0.1}>
-          <BookingEmbed />
+        <Reveal className="glass-card mt-12 p-7 sm:p-9" delay={0.1}>
+          <BookingForm />
         </Reveal>
         <Reveal delay={0.2}>
           <div className="mt-10 grid gap-3 text-center text-sm text-ink-dim sm:grid-cols-3">
