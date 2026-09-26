@@ -273,13 +273,17 @@ html.custom-cursor-active button {
 /* Intro screen (Preloader.tsx): the logo clip is screen-blended so its black
    frame drops out over the field, and edge-masked so no rectangle ever
    shows at any viewport ratio. */
+/* The clip is 1920x1080 with the logo filling ~51% of its width; capping the
+   display at 1200px keeps it at or below its native resolution (no upscaling
+   blur). The mask keeps the whole logo fully opaque and fades to nothing
+   exactly at the frame edge. */
 .preloader-video {
-  width: min(100vw, 1400px);
+  width: min(100vw, 1200px);
   max-height: 100vh;
   object-fit: contain;
   mix-blend-mode: screen;
-  -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000 45%, transparent 75%);
-  mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000 45%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 75% at 50% 50%, #000 52%, transparent 66%);
+  mask-image: radial-gradient(ellipse 70% 75% at 50% 50%, #000 52%, transparent 66%);
 }
 .preloader-rail {
   transform-origin: left;

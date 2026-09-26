@@ -33,10 +33,11 @@ export default function AboutPage() {
           </div>
           <Reveal delay={0.3} className="mx-auto w-full max-w-xs">
             <Image
-              src="/brand/logo-stacked.png"
+              src="/brand/logo-stacked.svg"
               alt="Go Rob Lacy Inc. — People | Systems | Greater Results"
-              width={900}
-              height={754}
+              width={1188}
+              height={1000}
+              unoptimized
               priority
               className="h-auto w-full"
             />

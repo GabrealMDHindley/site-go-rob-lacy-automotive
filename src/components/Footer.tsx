@@ -9,10 +9,11 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-[1.2fr_1fr_1fr]">
           <div>
             <Image
-              src="/brand/logo-lockup.png"
+              src="/brand/logo-lockup.svg"
               alt="Go Rob Lacy"
-              width={873}
-              height={120}
+              width={1573}
+              height={210}
+              unoptimized
               className="mb-4 h-7 w-auto"
             />
             <p className="max-w-xs text-sm text-ink-dim">{site.mission}</p>

@@ -26,10 +26,11 @@ export default function Header() {
       >
         <Link href="/" className="flex items-center gap-2" aria-label={`${site.name} home`}>
           <Image
-            src="/brand/logo-lockup.png"
+            src="/brand/logo-lockup.svg"
             alt="Go Rob Lacy"
-            width={873}
-            height={120}
+            width={1573}
+            height={210}
+            unoptimized
             priority
             className="h-6 w-auto sm:h-7"
           />

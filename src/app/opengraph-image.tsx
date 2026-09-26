@@ -26,7 +26,7 @@ export default async function Image() {
             "radial-gradient(circle at 80% 25%, rgba(214,162,50,0.28), transparent 50%), radial-gradient(circle at 15% 90%, rgba(47,127,224,0.3), transparent 55%)",
         }}
       >
-        <img src={logoSrc} alt="" width={437} height={60} style={{ marginBottom: 40 }} />
+        <img src={logoSrc} alt="" width={450} height={60} style={{ marginBottom: 40 }} />
         <div
           style={{
             fontSize: 60,

@@ -34,10 +34,11 @@ export default function LogoDrawIn() {
         ))}
       </svg>
       <Image
-        src="/brand/logo-lockup.png"
+        src="/brand/logo-lockup.svg"
         alt="Go Rob Lacy"
-        width={873}
-        height={120}
+        width={1573}
+        height={210}
+        unoptimized
         priority
         className="h-7 w-auto opacity-0 sm:h-8"
         style={{ animation: "fade-up 0.5s ease-out 0.9s forwards" }}
