@@ -82,6 +82,27 @@ Every "Book Your Call" button goes to `/book`, the site's own day/time calendar
 
 ---
 
+## Website chat assistant → Anthropic (Claude)
+
+A chat bubble in the bottom-right corner of every page answers visitors' questions
+about the services and invites them to book a call. It's powered by Anthropic's
+Claude and answers only from the site's own content (`src/data/site.ts`), so it never
+contradicts the pages. It stays hidden until you connect it:
+
+1. Create an account at [console.anthropic.com](https://console.anthropic.com), add a
+   payment method / credits under **Billing**, then **API Keys → Create Key** and
+   copy the key (it starts with `sk-ant-`).
+2. In Vercel: **Project → Settings → Environment Variables**, add
+   `ANTHROPIC_API_KEY` = the key, then **redeploy**.
+3. Optional — set `ANTHROPIC_MODEL` to choose the model. The default is
+   `claude-opus-5`; `claude-sonnet-5` or `claude-haiku-4-5` cost less per message.
+
+Usage is billed by Anthropic per message. Each visitor is limited to 20 messages per
+10 minutes to prevent abuse; set a monthly spend limit in the Anthropic Console under
+**Limits** for a hard cap.
+
+---
+
 ## Editing the site
 
 | What | Where |
@@ -91,6 +112,7 @@ Every "Book Your Call" button goes to `/book`, the site's own day/time calendar
 | Logos | `public/brand/` — `logo.svg` (full color, for light backgrounds), `logo-stacked.svg` (for dark backgrounds), `logo-lockup.svg` (horizontal, used in the header/footer) |
 | Loading-screen video | `public/videos/brand/logo-reveal.mp4` + `poster.jpg` |
 | Booking hours / timezone (before GHL is connected) | `src/lib/booking.ts` |
+| Chat assistant's instructions (it reads its facts from `site.ts`) | `src/lib/chat.ts` |
 | Home page section order | `src/app/page.tsx` |
 
 Optional video slots in `src/data/site.ts`: set a Vimeo ID on `vsl` to add a "See It In

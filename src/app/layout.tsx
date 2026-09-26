@@ -6,6 +6,8 @@ import SmoothScroll from "@/components/SmoothScroll";
 import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
 import FieldBackdrop from "@/components/FieldBackdrop";
+import ChatWidget from "@/components/ChatWidget";
+import { chatConfigured } from "@/lib/chat";
 import { site } from "@/data/site";
 
 const TITLE = "Go Rob Lacy — Growth Systems For Car Dealerships";
@@ -94,6 +96,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        {/* AI chat assistant — appears once ANTHROPIC_API_KEY is set on the deployment */}
+        {chatConfigured() && <ChatWidget />}
       </body>
     </html>
   );
