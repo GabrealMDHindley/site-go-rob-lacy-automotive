@@ -1,9 +1,8 @@
 import { BUSINESS_TIMEZONE, type Availability, type BookingDay } from "./booking";
 import { GHL_FIELD_MESSAGE, GHL_FIELD_ROLE } from "./leadForm";
 
-// GoHighLevel v3 API client — ported from the studio's Train & Scale site,
-// where this exact flow was verified end-to-end against a live GHL calendar.
-// Once connected it is the booking calendar's source of truth for live
+// GoHighLevel v3 API client. Once connected it is the booking calendar's
+// source of truth for live
 // availability, and where a completed booking actually lands (a contact
 // record + a real appointment on the dedicated calendar). Requires three
 // Vercel env vars: GHL_API_KEY (Private Integration token), GHL_LOCATION_ID,

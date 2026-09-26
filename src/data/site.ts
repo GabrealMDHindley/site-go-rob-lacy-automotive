@@ -1,20 +1,18 @@
-// Central content data for the Go Rob Lacy dealership site.
-//
-// Sourcing (studio accuracy rule — nothing here is invented):
-// - Services + service copy: verbatim from the studio owner's own Summit
-//   Holdings AI "Car Dealerships" industry page
-//   (summitholdingsartificialintelligence.com/#/industry/car-dealerships),
-//   in the order the owner specified. Services with no dealership-specific
-//   copy on that page (Content Creation & Growth, Viral Content Automation)
-//   use the page's own catalog description, exactly as the page renders it.
-// - The 10 ad-system steps: that page's own step generator, expanded for
-//   dealerships (target "buyer", close word "customer").
-// - Testimonials: every "Car Dealerships" testimonial on that page (20),
-//   verbatim, with the name and service label exactly as published.
-// - Contact details: from the client's own site, goroblacy.com (footer
-//   "Contact" / "Office"), per the studio owner's instruction.
-// - Short summaries (timeline bullets, stats, hero/mission lines) are
-//   condensed from the verbatim copy above — no new claims.
+// Central content data for the Go Rob Lacy dealership site — every piece of
+// copy on the site (services, steps, testimonials, contact details, stats,
+// headlines) lives in this one file. Edit text here and redeploy.
+
+// The site's public address, used for canonical links, the sitemap, robots.txt
+// and social previews. Resolved automatically on Vercel (the project's
+// production domain — its custom domain once one is assigned); set
+// NEXT_PUBLIC_SITE_URL to override, e.g. https://www.example.com
+const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL &&
+    `https://${process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}`) ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL && `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`) ||
+  "http://localhost:3000"
+).replace(/\/+$/, "");
 
 export const site = {
   name: "Go Rob Lacy",
@@ -36,7 +34,7 @@ export const site = {
     postalCode: "66502",
     country: "US",
   },
-  url: "https://site-go-rob-lacy-automotive.vercel.app",
+  url: SITE_URL,
 } as const;
 
 export const addressLine = `${site.address.street}, ${site.address.city}, ${site.address.region} ${site.address.postalCode}`;
@@ -68,11 +66,11 @@ export type ServiceStep = { title: string; body: string };
 
 export type Service = {
   id: string;
-  /** Full service name, exactly as listed on the Summit page. */
+  /** Full service name. */
   name: string;
   /** Short tab label. */
   short: string;
-  /** Summit's catalog category for the service. */
+  /** Category label shown with the service. */
   category: string;
   /** Lead line shown in the service's highlight card. */
   lead: string;
