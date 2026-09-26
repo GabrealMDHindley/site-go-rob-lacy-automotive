@@ -68,5 +68,6 @@ the GoHighLevel flow was verified end-to-end. Times are Central (`America/Chicag
 
 ## Deploys
 
-Auto-deploys on every push to `main` via the connected GitHub repository (Vercel team
-**SHAI**).
+Auto-deploys on every push to `main` via the connected GitHub repository — Vercel
+project `site-go-rob-lacy-automotive` (`prj_daIquqyE6GamC9REqFdhMrRYWPBU`), team
+**SHAI**. The GHL_* env vars for the booking calendar are set on that project.
